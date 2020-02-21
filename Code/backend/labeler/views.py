@@ -1,3 +1,4 @@
+from django.template.defaulttags import csrf_token
 from django.shortcuts import render
 
 # Create your views here.
