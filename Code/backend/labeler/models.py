@@ -14,6 +14,6 @@ class Image(models.Model):
   image_url = models.CharField(max_length=256)
   local_file_name = models.CharField(max_length=128)
   possible_labels = ArrayField(models.CharField(max_length=20, blank=True))
-
+  picked_label = models.CharField(max_length=20, blank=True)
   def _str_(self):
     return self.local_file_name
