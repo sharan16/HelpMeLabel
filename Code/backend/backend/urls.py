@@ -18,9 +18,11 @@ from django.urls import path, include                 # add this
 from rest_framework import routers                    # add this
 from labeler import views                            # add this
 
-router = routers.DefaultRouter()                      # add this
-router.register(r'labeler', views.TodoView, 'labeler')     # add this
+router = routers.SimpleRouter()                      # add this
+router.register(r'todos', views.TodoView)
+router.register(r'images', views.ImageView)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),         path('api/', include(router.urls))                # add this
+    path('admin/', admin.site.urls),
+    path('api/', include(router.urls))
 ]
