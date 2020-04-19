@@ -12,6 +12,10 @@ django-cors-headers = "*"
 pylint = "*"
 psycopg2 = "==2.7.7"
 psycopg2-binary = "*"
+uuid = "*"
+boto3 = "*"
+pathlib = "*"
+botocore = "*"
 
 [requires]
 python_version = "3.7"
