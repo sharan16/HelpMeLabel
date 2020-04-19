@@ -48,7 +48,9 @@ for index, path in enumerate(filePaths):
 
     s3_url = upload_to_aws(path, config.BUCKET_NAME, s3_file_name)
 
-    res = upload_to_postgres(s3_url, s3_file_name)
-
-    if res < 0:
-        exit()
+    if s3_url == False:
+        print("Could not upload image to AWS. Not uploading image to PostgreSQL.")
+    else:
+        res = upload_to_postgres(s3_url, s3_file_name)
+        if res < 0:
+            exit()
