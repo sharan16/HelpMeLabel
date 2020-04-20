@@ -14,7 +14,6 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +34,20 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.navbar-background{
+  color: white;
+  background-color: #5197e6;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.label-image-header{
+  padding: 2% 0% 2% 0%;
+  text-align: center;
+  color: grey;
+}
+
+.label-image{
+  text-align: center;
 }
