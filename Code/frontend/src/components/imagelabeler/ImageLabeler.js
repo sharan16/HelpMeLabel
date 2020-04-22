@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useState, useEffect, Fragment, useCallback } from 'react'
 import axios from 'axios' 
 import PropagateLoader from "react-spinners/PropagateLoader";
 import { css } from "@emotion/core";
@@ -7,6 +7,7 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import Grow from '@material-ui/core/Grow';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
+import { Container } from '@material-ui/core';
 
 const ImageLabeler = () => {
 
@@ -19,8 +20,8 @@ const ImageLabeler = () => {
 
 	const useStyles = makeStyles(theme => ({
 		root: {
-		  height: 450,
-		  display: "flex",
+			maxHeight: 450,
+			display: "flex",
 		  flexDirection: "column",
 		  justifyContent: "center"
 		},
@@ -31,26 +32,26 @@ const ImageLabeler = () => {
 		}
 	  }));
 
-	useEffect(async () => {
+	useEffect(() => {
 		loadNextImage()
 	}, []);
 
-	let handleNavigateNext =  () => {
-		loadNextImage()
-	}
-
-	let loadNextImage = async() => {
+	const loadNextImage = async() => {
 		setLoading(true)
 		let res = await axios.get('api/images/get_unlabeled_image/')
 		setImageURL(res.data.image_url)
 		setLoading(false)
 	}
 
+	const handleNavigateNext = useCallback(() => {
+		loadNextImage()
+	}, [loadNextImage])
+
 	const classes = useStyles();
 
 	return (
 		<Fragment>
-			<Grid container spacing={4}>
+			<Grid container>
 				<Grid item xs={12}>
 					<div className = "label-image-header">
 						<h1>
@@ -58,29 +59,28 @@ const ImageLabeler = () => {
 						</h1>
 					</div>
         		</Grid>
-				<Grid item xs={4}>
-					<div>
-					</div>
-        		</Grid>
+				<Grid xs={4} />
 				<Grid className = {classes.root} item xs={4}>
-					{ loading ?
-						<PropagateLoader 
-						css={override}
-						size={20}
-						color={"#5197e6"}
-						/>
-					:
-						<Grow in ={true} timeout= {1000}>
-						<div className = "label-image">
-							<img className = "responsive-image" src = {imageURL}/>
-						</div>
-						</Grow>
-					}
+						{ loading ?
+							<PropagateLoader 
+								css={override}
+								size={20}
+								color={"#5197e6"}
+							/>
+						:
+							<Grow in ={true} timeout= {1000}>
+								<div className = "label-image">
+									<img className = "responsive-image" src = {imageURL}/>
+								</div>
+							</Grow>
+						}
         		</Grid>
 				<Grid className = {classes.naviagateNext} item xs={1}>
-					<IconButton color="primary" aria-label="view next image" onClick = {() => {handleNavigateNext()}}>
-						<NavigateNextIcon />
-					</IconButton>
+					<Container>
+						<IconButton color="primary" aria-label="view next image" onClick = {() => {handleNavigateNext()}}>
+							<NavigateNextIcon />
+						</IconButton>
+					</Container>
         		</Grid>
 			</Grid>
 		</Fragment>
