@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "93030e8008abf0abaebcbdb27e835b0f8b75ee28b2901aa99280f30b7472d2f4"
+            "sha256": "9e479275a9f452c1cc157d8a3af83c94a1153d33c90e1608e3ce4e982aead68e"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -32,19 +32,19 @@
         },
         "boto3": {
             "hashes": [
-                "sha256:c2c1ee703cb0fa03c5df84b7f00eaa462c808be477dc9014c1e8eef269122770",
-                "sha256:ef16d7dc5f357faf1b081411d2faf62a01793f79a9d664c8b6b1b3ff37aa5e44"
+                "sha256:2186fca030ec6a4b00c5def1d7b86346da10eef41ae17b18f912621016f9196e",
+                "sha256:91af98b5bd555afacb7abe8afd7ed615e94c6d747e3f50588943b99a5a49789c"
             ],
             "index": "pypi",
-            "version": "==1.12.41"
+            "version": "==1.12.44"
         },
         "botocore": {
             "hashes": [
-                "sha256:a45a65ba036bc980decfc3ce6c2688a2d5fffd76e4b02ea4d59e63ff0f6896d4",
-                "sha256:b12a5b642aa210a72d84204da18618276eeae052fbff58958f57d28ef3193034"
+                "sha256:c08d2ae350b48fbdbb01d34915859c19ef702a244ddc1a71b5c369183b9e4f65",
+                "sha256:fcb84381f6fa2d8f96e2647bc059790b1a5a9ce0d00a5296ffe0946bdee15802"
             ],
             "index": "pypi",
-            "version": "==1.15.41"
+            "version": "==1.15.44"
         },
         "django": {
             "hashes": [
@@ -53,6 +53,19 @@
             ],
             "index": "pypi",
             "version": "==3.0.5"
+        },
+        "django-background-tasks": {
+            "hashes": [
+                "sha256:e1b19e8d495a276c9d64c5a1ff8b41132f75d2f58e45be71b78650dad59af9de"
+            ],
+            "index": "pypi",
+            "version": "==1.2.5"
+        },
+        "django-compat": {
+            "hashes": [
+                "sha256:3ac9a3bedc56b9365d9eb241bc5157d0c193769bf995f9a78dc1bc24e7c2331b"
+            ],
+            "version": "==1.0.15"
         },
         "django-cors-headers": {
             "hashes": [
