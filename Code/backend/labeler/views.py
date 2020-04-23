@@ -20,7 +20,6 @@ class ImageView(viewsets.ModelViewSet):       # add this
     
     @action(methods=['get'], detail=False)
     def get_unlabeled_image(self,request):
-        # pdb.set_trace()
         q = Image.objects.filter(picked_label = "").filter(is_sent = False)
         image = q.first()
         image.is_sent = True
