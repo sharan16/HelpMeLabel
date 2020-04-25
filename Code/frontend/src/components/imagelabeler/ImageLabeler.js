@@ -51,7 +51,7 @@ const ImageLabeler = () => {
 		setImageId(res.data.id);
 		setPossibleLabels(res.data.possible_labels);
 		setLoading(false);
-	},[setLoading,setImageURL]);
+	},[setLoading, setImageURL, setPossibleLabels, setImageId]);
 
 	const handleNavigateNext = useCallback(() => {
 		loadNextImage();
