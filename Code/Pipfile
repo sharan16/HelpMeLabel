@@ -17,6 +17,7 @@ boto3 = "*"
 pathlib = "*"
 botocore = "*"
 django-background-tasks = "*"
+djangorestframework-jwt = "*"
 
 [requires]
 python_version = "3.7"
