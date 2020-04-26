@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include                 # add this
 from rest_framework import routers                    # add this
 from labeler import views                            # add this
+from rest_framework_jwt.views import obtain_jwt_token
 
 router = routers.SimpleRouter()                      # add this
 router.register(r'todos', views.TodoView)
@@ -24,5 +25,7 @@ router.register(r'images', views.ImageView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls))
+    path('api/', include(router.urls)),
+    path('core/', include('core.urls')),
+    path('token-auth/', obtain_jwt_token)
 ]
