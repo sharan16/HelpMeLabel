@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Fragment, useCallback } from 'react'
+
 import axios from 'axios' 
 import PropagateLoader from 'react-spinners/PropagateLoader';
 import { css } from '@emotion/core';
@@ -9,45 +10,58 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
 
+import ImageButtons from "./ImageButtons"
+
+const override = css`
+left: 50%;
+`;
+
+const useStyles = makeStyles(theme => ({
+root: {
+	maxHeight: 450,
+	display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center'
+},
+naviagateNext:{
+	display: 'flex',
+	flexDirection: 'column',
+	justifyContent: 'center',
+}
+}));
+
 const ImageLabeler = () => {
 
-	let [imageURL, setImageURL] = useState('')
-  	let [loading, setLoading] = useState(true)
+	const [imageURL, setImageURL] = useState('');
+	const [imageId, setImageId] = useState(-1);
+	const [loading, setLoading] = useState(true);
+	const [possibleLabels, setPossibleLabels] = useState([]);
 
-	const override = css`
-		left: 50%;
-	`;
+	const onSelect = possibleLabel => event => {
+		console.log(possibleLabel);
+		axios.post('api/images/label_image/',{image_id: imageId, label: possibleLabel});
+		loadNextImage();
+	}
 
-	const useStyles = makeStyles(theme => ({
-		root: {
-			maxHeight: 450,
-			display: 'flex',
-		  flexDirection: 'column',
-		  justifyContent: 'center'
-		},
-		naviagateNext:{
-			display: 'flex',
-			flexDirection: 'column',
-			justifyContent: 'center',
-		}
-	  }));
+	const loadNextImage = useCallback(async() => {
+		setPossibleLabels([]);
+		setLoading(true);
+		let res = await axios.get('api/images/get_unlabeled_image/')
+		setImageURL(res.data.image_url);
+		setImageId(res.data.id);
+		setPossibleLabels(res.data.possible_labels);
+		setLoading(false);
+	},[setLoading, setImageURL, setPossibleLabels, setImageId]);
 
-	  const loadNextImage = useCallback(async() => {
-		  setLoading(true)
-		  let res = await axios.get('api/images/get_unlabeled_image/')
-		  setImageURL(res.data.image_url)
-		  setLoading(false)
-		},[setLoading,setImageURL])
-		
-		const handleNavigateNext = useCallback(() => {
-			loadNextImage()
-		}, [loadNextImage])
-		
-		const classes = useStyles();
-		
-		useEffect(() => {
-			loadNextImage()
-		}, [loadNextImage]);
+	const handleNavigateNext = useCallback(() => {
+		loadNextImage();
+	}, [loadNextImage]);
+	
+	const classes = useStyles();
+	
+	useEffect(() => {
+		loadNextImage();
+	}, [loadNextImage]);
 		
 	return (
 		<Fragment>
@@ -83,6 +97,7 @@ const ImageLabeler = () => {
 					</Container>
         		</Grid>
 			</Grid>
+			<ImageButtons possibleLabels={possibleLabels} onSelect={onSelect}/>
 		</Fragment>
   	)
 }
