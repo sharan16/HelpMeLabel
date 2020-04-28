@@ -1,7 +1,6 @@
 from django.template.defaulttags import csrf_token
 from django.shortcuts import render
 from django.http import JsonResponse
-from django.contrib.auth.models import User
 
 import pdb
 # Create your views here.
@@ -24,21 +23,19 @@ class ImageSetView(viewsets.ModelViewSet):
 
         '''
         request.data structure:
-        {'name':'xxx', 'owner':'xxx', 'possible_labels':['xxx]}
+        {'name':'xxx', 'possible_labels':['xxx']}
         '''
 
-        owner = UserS
+        image_set_name = request.data.get('name')
+        possible_labels = request.data.get('possible_labels')
 
-        image_set = ImageSet(name = request.data['name'], owner = 0, possible_labels = request.data['possible_labels'])
+        if not image_set_name or not possible_labels:
+            return JsonResponse({'status': False, 'message': "Invalid parameters"}, status=500)
+
+        image_set = ImageSet(name = str(image_set_name), owner = request.user, possible_labels = request.data['possible_labels'])
+        image_set.save()
 
         return JsonResponse(ImageSetSerializer(image_set).data)
-
-        
-
-        # Set owner
-        # Set image set name
-        # Set possible labels
-
 
 class ImageView(viewsets.ModelViewSet):       # add this
     serializer_class = ImageSerializer          # add this
