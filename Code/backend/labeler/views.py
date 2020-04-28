@@ -26,6 +26,9 @@ class ImageSetView(viewsets.ModelViewSet):
         {'name':'xxx', 'possible_labels':['xxx']}
         '''
 
+        if not request.user.is_authenticated:
+            return JsonResponse({'status': False, 'message': "Invalid user authentication."}, status=401)
+
         image_set_name = request.data.get('name')
         possible_labels = request.data.get('possible_labels')
 
