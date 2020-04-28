@@ -21,6 +21,7 @@ from labeler import views                            # add this
 router = routers.SimpleRouter()                      # add this
 router.register(r'todos', views.TodoView)
 router.register(r'images', views.ImageView)
+router.register(r'imagesets', views.ImageSetView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

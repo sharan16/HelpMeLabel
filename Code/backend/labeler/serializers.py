@@ -1,6 +1,6 @@
 
 from rest_framework import serializers
-from .models import Todo, Image
+from .models import Todo, Image, ImageSet
 
 class TodoSerializer(serializers.ModelSerializer):
   class Meta:
@@ -10,4 +10,9 @@ class TodoSerializer(serializers.ModelSerializer):
 class ImageSerializer(serializers.ModelSerializer):
   class Meta:
     model = Image
-    fields = ('id', 'image_url', 'local_file_name', 'possible_labels', 'picked_label')
+    fields = ('id', 'image_url', 'local_file_name', 'picked_label')
+
+class ImageSetSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = ImageSet
+    fields = ('id', 'name', 'owner', 'possible_labels')

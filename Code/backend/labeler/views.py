@@ -1,18 +1,44 @@
 from django.template.defaulttags import csrf_token
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.contrib.auth.models import User
 
 import pdb
 # Create your views here.
 from django.shortcuts import render
 from rest_framework import viewsets          # add this
-from .serializers import TodoSerializer, ImageSerializer      # add this
-from .models import Todo, Image                   # add this
+from .serializers import TodoSerializer, ImageSerializer, ImageSetSerializer      # add this
+from .models import Todo, Image, ImageSet                # add this
 from rest_framework.decorators import action
 
 class TodoView(viewsets.ModelViewSet):       # add this
     serializer_class = TodoSerializer          # add this
     queryset = Todo.objects.all()              # add this
+
+class ImageSetView(viewsets.ModelViewSet):
+    serializer_class = ImageSetSerializer
+    queryset = ImageSet.objects.all()
+
+    @action(methods=['post'], detail=False)
+    def create_image_set(self, request):
+
+        '''
+        request.data structure:
+        {'name':'xxx', 'owner':'xxx', 'possible_labels':['xxx]}
+        '''
+
+        owner = UserS
+
+        image_set = ImageSet(name = request.data['name'], owner = 0, possible_labels = request.data['possible_labels'])
+
+        return JsonResponse(ImageSetSerializer(image_set).data)
+
+        
+
+        # Set owner
+        # Set image set name
+        # Set possible labels
+
 
 class ImageView(viewsets.ModelViewSet):       # add this
     serializer_class = ImageSerializer          # add this
