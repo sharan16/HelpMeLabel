@@ -10,7 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
 
-import ImageButtons from "./ImageButtons"
+import ImageButtons from "components/imagelabeler/ImageButtons"
 
 const override = css`
 left: 50%;

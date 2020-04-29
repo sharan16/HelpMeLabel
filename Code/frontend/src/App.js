@@ -10,6 +10,7 @@ import Landing from "./components/landing/Landing"
 import ImageLabeler from "./components/imagelabeler/ImageLabeler"
 import Login from "./components/auth/Login"
 import Signup from "./components/auth/Signup"
+import ImageSetOverview from "./components/ImageSets/ImageSetOverview"
 
 const App = () => { 
 
@@ -19,6 +20,7 @@ const App = () => {
           		<Navbar />
           		<Switch>
                     <Route exact path ='/' component = {Landing} />
+					<Route exact path ='/sets' component = {ImageSetOverview} />
                     <Route exact path ='/label' component = {ImageLabeler} />
                     <Route exact path ='/login' component = {Login} />
                     <Route exact path ='/signup' component = {Signup} />
