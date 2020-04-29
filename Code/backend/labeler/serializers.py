@@ -15,4 +15,4 @@ class ImageSerializer(serializers.ModelSerializer):
 class ImageSetSerializer(serializers.ModelSerializer):
   class Meta:
     model = ImageSet
-    fields = ('id', 'name', 'owner', 'possible_labels')
+    fields = ('id', 'name', 'user', 'possible_labels')

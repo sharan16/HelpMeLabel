@@ -24,12 +24,12 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=128)),
                 ('possible_labels', django.contrib.postgres.fields.ArrayField(base_field=models.CharField(blank=True, max_length=20), size=None)),
-                ('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
         migrations.AddField(
             model_name='image',
             name='image_set',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='labeler.ImageSet'),
+            field=models.ForeignKey(default=None, on_delete=django.db.models.deletion.CASCADE, to='labeler.ImageSet'),
         ),
     ]

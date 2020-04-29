@@ -13,7 +13,7 @@ class Todo(models.Model):
 
 class ImageSet(models.Model):
   name = models.CharField(max_length=128)
-  owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+  user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
   possible_labels = ArrayField(models.CharField(max_length=20, blank=True))
 
   def _str_(self):
@@ -24,7 +24,7 @@ class Image(models.Model):
   local_file_name = models.CharField(max_length=128)
   picked_label = models.CharField(max_length=20, blank=True)
   is_sent = models.BooleanField(default=False)
-  image_set = models.ForeignKey('ImageSet', on_delete=models.CASCADE)
+  image_set = models.ForeignKey('ImageSet', on_delete=models.CASCADE, default = None)
 
   def _str_(self):
     return self.local_file_name

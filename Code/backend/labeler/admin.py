@@ -8,7 +8,7 @@ class ImageAdmin(admin.ModelAdmin):  # add this
     list_display = ('id', 'image_url', 'local_file_name', 'picked_label') # add this
 
 class ImageSetAdmin(admin.ModelAdmin):  # add this
-    list_display = ('id', 'name', 'owner', 'possible_labels') # add this
+    list_display = ('id', 'name', 'user', 'possible_labels') # add this
 
 # Register your models here.
 admin.site.register(Todo, TodoAdmin) # add this

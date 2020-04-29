@@ -35,7 +35,7 @@ class ImageSetView(viewsets.ModelViewSet):
         if not image_set_name or not possible_labels:
             return JsonResponse({'status': False, 'message': "Invalid parameters"}, status=500)
 
-        image_set = ImageSet(name = str(image_set_name), owner = request.user, possible_labels = request.data['possible_labels'])
+        image_set = ImageSet(name = str(image_set_name), user = request.user, possible_labels = request.data['possible_labels'])
         image_set.save()
 
         return JsonResponse(ImageSetSerializer(image_set).data)
