@@ -10,7 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
-// import { ImageSet } from 'components/imagelabeler/ImageSet'
+import { ImageSet } from './ImageSet'
 const override = css`
 left: 50%;
 `;
@@ -34,11 +34,7 @@ const IMAGE_SETS =[
 
 const ImageSetOverview = () => {
 
-
-
 	const loadNextImage = () => {return }
-
-
 	
 	useEffect(() => {
 		loadNextImage();
@@ -52,7 +48,7 @@ const ImageSetOverview = () => {
             <Box>
 				{
 					IMAGE_SETS.map( imageSet =>{ 
-						// return <ImageSet imageSet={imageSet}/>
+						return <ImageSet imageSet={imageSet}/>
 					})
 				}
             </Box>
