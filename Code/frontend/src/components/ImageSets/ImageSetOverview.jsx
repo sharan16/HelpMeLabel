@@ -7,10 +7,12 @@ import IconButton from '@material-ui/core/IconButton';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import Grow from '@material-ui/core/Grow';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
+
 import { Container } from '@material-ui/core';
 import ImageSet from './ImageSet'
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 const override = css`
 left: 50%;
 `;
@@ -43,9 +45,27 @@ const ImageSetOverview = () => {
 	return (
 		<Fragment>
             <Box className = 'label-image-header'>
-                    Image Sets
+                    <h1>Image Sets</h1>
             </Box>
-            <Box>
+			<Box display="flex" flexDirection="row">
+				<Box display='inline-block'>
+					<Box display="flex" flexDirection="row">
+						<Box p={1} minWidth="120px" border={1}>
+							Image Set Id
+						</Box>
+						<Box p={1} minWidth="200px" border={1}>
+							Image Set Name
+						</Box>
+					</Box>
+				</Box>
+				<Box>
+						<IconButton aria-label="add">
+							<AddCircleIcon />
+						</IconButton>
+				</Box>
+			</Box>
+			
+            <Box width={1/2}>
 				{
 					IMAGE_SETS.map( imageSet =>{ 
 						return <ImageSet imageSet={imageSet}/>
