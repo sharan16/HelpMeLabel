@@ -10,7 +10,7 @@ class TodoSerializer(serializers.ModelSerializer):
 class ImageSerializer(serializers.ModelSerializer):
   class Meta:
     model = Image
-    fields = ('id', 'image_url', 'local_file_name', 'picked_label')
+    fields = ('id', 'image_url', 'local_file_name', 'picked_label', "image_set")
 
 class ImageSetSerializer(serializers.ModelSerializer):
   class Meta:
