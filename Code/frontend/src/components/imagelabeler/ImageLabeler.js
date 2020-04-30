@@ -7,7 +7,6 @@ import IconButton from '@material-ui/core/IconButton';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import Grow from '@material-ui/core/Grow';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
 

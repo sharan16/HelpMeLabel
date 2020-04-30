@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Grid, TextField, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Face, Fingerprint, Person } from '@material-ui/icons'
+import { Fingerprint, Person } from '@material-ui/icons'
 
 const useStyles = makeStyles(theme => ({
     margin: {
