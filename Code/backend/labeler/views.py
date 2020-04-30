@@ -63,6 +63,7 @@ class ImageView(viewsets.ModelViewSet):       # add this
         request.data structure:
         {'image_id':'xxx', 'label':'xxx'}
         '''
+        # pdb.set_trace()
         image_id = request.data.get('image_id')
         label = request.data.get('label')
         if not image_id or not label:
